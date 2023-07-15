@@ -1,0 +1,91 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center my-4">
+    <h1 class="display-4">Triangles</h1>
+    <h3 class="display-7">Input sides of triangle</h3>
+    @{if (Model.errorMessage != null) {
+         <p id="errorMessageServer" class="link-danger">@Model.errorMessage</p>
+      }
+     }
+    <p id="errorMessage" class="link-danger"></p>
+    <form method="post" action="" id="triangleForm">
+        Side A:<br />
+        <input type="number" name="SideA" id="sideA" value="" class="text-center sides" min="1" /><br />
+        Side B:<br />
+        <input type="number" name="SideB" id="sideB" value="" class="text-center sides" min="1" /><br />
+        Side C:<br />
+        <input type="number" name="SideC" id="sideC" value="" class="text-center sides" min="1" /><br />
+        <input type="submit" value="Submit" id="submitTriangle" class="submit my-2" />
+    </form>
+
+</div>
+
+@{
+
+    if (Model.myTriangle != null)
+    {
+        <div class="text-center">
+            <div class="d-sm-flex">
+                <table class="table mx-sm-5">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><h3 class="display-7">@Model.myTriangle.SideClassification</h3></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Side</th>
+                            <th scope="col">Length</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>@Model.myTriangle.SideA</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>@Model.myTriangle.SideB</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>@Model.myTriangle.SideC</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><h3 class="display-7">@Model.myTriangle.AngleClassification</h3></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Angle</th>
+                            <th scope="col">Measure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>@Model.myTriangle.AngleA&deg;</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>@Model.myTriangle.AngleB&deg;</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>@Model.myTriangle.AngleC&deg;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div><img src="~/img/triangle.png" alt="Triangle Image" /></div>
+        </div>
+    }}
+
+
+
+
+
